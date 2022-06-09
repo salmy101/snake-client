@@ -6,6 +6,10 @@ const conn = net.createConnection({ //setting up a connection to the server
   port:"50541"
 });
 
+conn.on("connect", () => {
+  conn.write("Name: SAL");
+});
+
 conn.setEncoding("utf8"); //interpret data as text
 
 return conn; 
