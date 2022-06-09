@@ -16,19 +16,21 @@ conn.on("connect", () => {
   // })
 });
 
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  const handleUserInput = function () {
-    stdin.on("data", handleUserInput);
-    if (key === '\u0003') {
-      process.exit();
-    }
-  };
-  return stdin;
-};
+const setupInput = require("./input.js");
+
+// const setupInput = function () {
+//   const stdin = process.stdin;
+//   stdin.setRawMode(true);
+//   stdin.setEncoding("utf8");
+//   stdin.resume();
+//   const handleUserInput = function () {
+//     stdin.on("data", handleUserInput);
+//     if (key === '\u0003') {
+//       process.exit();
+//     }
+//   };
+//   return stdin;
+// };
 
 
 return conn; 
@@ -38,3 +40,4 @@ return conn;
 console.log("Connecting...")
 connect(); 
 
+module.exports = connect;
